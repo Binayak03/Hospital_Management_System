@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Binayak Care Hospital</title>
+<!-- Bootstrap CSS CDN -->
+
+<!-- Optional Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .footer {
+            background-color: #dadfe2;
+            padding: 2rem 0;
+            border-top: 1px solid #dee2e6;
+        }
+        .footer h4 {
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+        .footer a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #0d6efd;
+            text-decoration: underline;
+        }
+        .mydivstyle:hover {
+        box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+        transform: translateY(-10px);
+        transition: all 0.5s ease;
+        }
+
+    </style>
+</head>
+<body>
+
+    {% include 'navigation.html' %}
+
+    <main class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer mt-auto">
+        <div class="container">
+            <div class="row text-center ">
+                <div class="col-md-3 col-sm-6 mb-4 mydivstyle">
+                    <h4><i class="fa-solid fa-phone"></i> Contact</h4>
+                    <p class="text-danger"><a href="tel:+9779810000000">+977-9810000000</a></p>
+                    <p class="text-danger"><a href="tel:01-4700001">01-4700001</a></p>
+                    <p class="text-danger"><a href="tel:01-4030001">01-4030001</a></p>
+
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 mydivstyle">
+                    <h4><i class="fa fa-envelope"></i> Email</h4>
+                    <p><a href="mailto:hamrohospital@gmail.com">hamrohospital@gmail.com</a></p>
+                    <p><a href="mailto:hamrohospitalemergency@gmail.com">hamrohospitalemergency@gmail.com</a></p>
+                    <p><a href="mailto:hamrohospital2@gmail.com">hamrohospital2@gmail.com</a></p>
+
+
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 mydivstyle">
+                    <h4><i class="fa-solid fa-location-dot"></i> Address</h4>
+                    <p><a href="http://maps.google.com/maps?q=golfutar+budhanilkantha">Hamro Hospital, Budhanilkantha</a></p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4 mydivstyle">
+                    <h4><i class="fa-solid fa-stethoscope"></i> Checkup Time</h4>
+                    <p><strong>Emergency:</strong> 24/7</p>
+                    <p><strong>OPD Morning:</strong><br>Registration: 8 AM - 11 AM<br>Checkup: 10 AM - 1 PM</p>
+                    <p><strong>OPD Evening:</strong><br>Registration: 2 PM - 5 PM<br>Checkup: 3 PM - 6 PM</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Hero Section -->
+    <section class="hero-section mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold text-primary mb-4">Welcome to Binayak Care Hospital</h1>
+                <p class="lead text-muted mb-4">
+                    Established in <strong class="text-dark">2025 AD / 2082 BS</strong>, we deliver world-class healthcare at affordable prices.
+                    Our services rival premium private hospitals while remaining accessible to all.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge bg-primary">24/7 Emergency</span>
+                    <span class="badge bg-success">150+ Beds</span>
+                    <span class="badge bg-info">50+ Doctors</span>
+                    <span class="badge bg-warning text-dark">NABH Accredited</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/BinayakCare.jpeg' %}" alt="Binayak Care Hospital" class="img-fluid rounded shadow"
+                     onerror="this.onerror=null;this.src='{% static 'images/hospital-placeholder.jpg' %}'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section mb-5 py-4 bg-light rounded">
+        <h2 class="text-center mb-5">Our Comprehensive Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
+                        <h5>Online Appointment</h5>
+                        <p>Book consultations with specialists from anywhere</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-medical fa-3x text-primary mb-3"></i>
+                        <h5>Digital Reports</h5>
+                        <p>Access test results securely online</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-pills fa-3x text-primary mb-3"></i>
+                        <h5>Pharmacy Services</h5>
+                        <p>In-house pharmacy with inventory tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments-section mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Our Specialized Departments</h2>
+            <a href="#" class="btn btn-outline-primary">View All</a>
+        </div>
+        <div class="row g-3">
+            {% for dept in departments %}
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="department-card text-center p-3 border rounded hover-shadow">
+                    <i class="fas fa-heartbeat fa-2x text-danger mb-2"></i>
+                    <h6 class="mb-0">{{ dept.name }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors-section mb-5">
+        <div class="text-center mb-5">
+            <h2>Meet Our Expert Doctors</h2>
+            <p class="text-muted">Highly qualified specialists dedicated to your health</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for doctor in doctors %}
+            <div class="col">
+                <div class="card doctor-card h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="doctor-image-container">
+                        <img src="{% static 'images/' %}{{ doctor.img }}"
+                             class="card-img-top"
+                             alt="{{ doctor.name }}"
+                             onerror="this.onerror=null;this.src='{% static 'images/doctor-placeholder.jpg' %}'">
+                        <div class="doctor-overlay">
+                            <a href="mailto:{{ doctor.email }}" class="btn btn-light btn-sm rounded-circle me-2">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="btn btn-light btn-sm rounded-circle">
+                                <i class="fas fa-calendar-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-1">{{ doctor.name }}</h5>
+                        <p class="text-muted mb-2">{{ doctor.dept }}</p>
+                        <div class="d-flex justify-content-center">
+                            <span class="badge bg-light text-dark me-2">15+ Years</span>
+                            <span class="badge bg-light text-dark">5000+ Patients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <!-- CTA Section -->
+<section class="cta-section bg-primary text-white rounded p-5 text-center">
+    <h3 class="mb-4">Need Medical Assistance?</h3>
+    <p class="mb-4">Our team is ready to provide you with exceptional care</p>
+    <div class="d-flex justify-content-center gap-3">
+        <!-- Emergency Call Dropdown -->
+        <div class="dropdown">
+            <button class="btn btn-light px-4 dropdown-toggle" type="button" id="emergencyDropdown" data-bs-toggle="dropdown">
+                <i class="fas fa-phone me-2"></i> Emergency Call
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
+                <li><h6 class="dropdown-header">Emergency Contacts</h6></li>
+                <li><a class="dropdown-item" href="tel:+977-9810000000"><i class="fas fa-ambulance me-2"></i> Ambulance: +977-9810000000</a></li>
+                <li><a class="dropdown-item" href="tel:+977-9810000001"><i class="fas fa-hospital me-2"></i> Emergency: +977-9810000001</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="tel:102"><i class="fas fa-phone-alt me-2"></i> National Emergency: 102</a></li>
+            </ul>
+        </div>
+
+        <!-- Book Appointment Button -->
+        <a href="{% url 'appointment' %}" class="btn btn-outline-light px-4">
+            <i class="fas fa-calendar me-2"></i> Book Appointment
+        </a>
+    </div>
+</section>
+
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+        transition: all 0.3s ease;
+    }
+    .doctor-card {
+        transition: all 0.3s ease;
+    }
+    .doctor-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    .doctor-image-container {
+        position: relative;
+        overflow: hidden;
+        height: 300px; /* Fixed height for all doctor images */
+    }
+    .doctor-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+    .doctor-overlay {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    .doctor-card:hover .doctor-overlay {
+        bottom: 0;
+    }
+    .department-card {
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+</style>
+{% endblock %}

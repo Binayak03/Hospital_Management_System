@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-hospital me-2"></i>Binayak Care Hospital
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'services' %}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Staff</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'appointment' %}">Appointments</a>
+                </li>
+            </ul>
+
+            <form class="d-flex me-3">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search everything..." aria-label="Search">
+                    <button class="btn btn-light" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-sign-in-alt me-1"></i> Login
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><h6 class="dropdown-header">Select Login Type</h6></li>
+                        <li><a class="dropdown-item" href="/admin/login"><i class="fas fa-user-shield me-2"></i>Admin Login</a></li>
+                        <li><a class="dropdown-item" href="/doctor/login"><i class="fas fa-user-md me-2"></i>Doctor Login</a></li>
+                        <li><a class="dropdown-item" href="/patient/login"><i class="fas fa-user-injured me-2"></i>Patient Login</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/register"><i class="fas fa-user-plus me-2"></i>New Registration</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
