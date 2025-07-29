@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 def Home(request):
     return render(request, 'home.html')
@@ -62,3 +64,31 @@ def Services(request):
 
 def Appointment(request):
     return render(request, 'appointment.html')
+
+def Index(request):
+    if not request.user.is_staff:
+        return redirect('login')
+    return render(request, 'index.html')
+
+def Login(request):
+    error = ""
+    if request.method == "POST":
+        u = request.POST['uname']
+        p = request.POST['pwd']
+        user = authenticate(username=u, password=p)
+
+        if user is not None and user.is_staff:
+            login(request, user)
+            return redirect('index')  # Redirect on successful login
+        else:
+            error = "yes"  # Login failed
+
+    return render(request, 'login.html', {'error': error})
+
+def Logout_admin(request):
+    if not request.user.is_staff:
+        return redirect('login')
+
+    logout(request)
+    return redirect('login')
+

@@ -26,8 +26,59 @@
         </div>
     </section>
 
+    <!-- Hospital Story Section -->
+    <section class="hospital-story mb-5 py-5 bg-light rounded">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h2 class="text-primary">Our Humble Beginnings</h2>
+                    <div class="divider mx-auto bg-primary" style="width: 80px; height: 3px;"></div>
+                </div>
+
+                <div class="story-content">
+                    <p class="lead text-center mb-4">
+                        <i class="fas fa-quote-left text-primary me-2"></i>
+                        Binayak Care Hospital was founded with a vision, a vision born from compassion and the belief that quality healthcare should never be a luxury.
+                        <i class="fas fa-quote-right text-primary ms-2"></i>
+                    </p>
+
+                    <div class="row align-items-center mt-4">
+                        <div class="col-md-6">
+                            <img src="{% static 'images/hospital-construction.jpg' %}"
+                                 alt="Hospital Construction"
+                                 class="img-fluid rounded shadow mb-4 mb-md-0"
+                                 onerror="this.onerror=null;this.src='{% static 'images/HospitalConstruction.jpeg' %}'">
+                        </div>
+                        <div class="col-md-6">
+                            <p>The hospital was established by the Binayak Bhattarai Care Trust, a non-profit organization dedicated to improving public health in Nepal. The founder, Binayak Bhattarai, dreamed of creating a modern medical facility that delivers world-class healthcare services at a price every citizen can afford, regardless of their background.</p>
+
+                            <p>Backed by Kathmandu University, the hospital's foundation was laid in 2022 A.D., thanks to the generous support of crowdfunding campaigns and well-wishers from all walks of life. What started as a dream quickly turned into a movement — uniting doctors, donors, and the community to build something truly meaningful.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-white rounded shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-heartbeat fa-2x text-primary me-3"></i>
+                            <h4 class="mb-0">Our Mission Today</h4>
+                        </div>
+                        <p>Today, Binayak Care Hospital stands as a symbol of hope, affordability, and advanced care, serving people from all over the country with dedication and heart. Thank you to everyone who believed in this dream and helped make it a reality.</p>
+
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-outline-primary me-2">
+                                <i class="fas fa-book me-1"></i> Read Our Full History
+                            </a>
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-hand-holding-heart me-1"></i> Support Our Mission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
-    <section class="features-section mb-5 py-4 bg-light rounded">
+    <section class="features-section mb-5 py-4 bg-white rounded">
         <h2 class="text-center mb-5">Our Comprehensive Services</h2>
         <div class="row g-4">
             <div class="col-md-4">
@@ -117,33 +168,46 @@
     </section>
 
     <!-- CTA Section -->
-    <!-- CTA Section -->
-<section class="cta-section bg-primary text-white rounded p-5 text-center">
-    <h3 class="mb-4">Need Medical Assistance?</h3>
-    <p class="mb-4">Our team is ready to provide you with exceptional care</p>
-    <div class="d-flex justify-content-center gap-3">
-        <!-- Emergency Call Dropdown -->
-        <div class="dropdown">
-            <button class="btn btn-light px-4 dropdown-toggle" type="button" id="emergencyDropdown" data-bs-toggle="dropdown">
-                <i class="fas fa-phone me-2"></i> Emergency Call
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
-                <li><h6 class="dropdown-header">Emergency Contacts</h6></li>
-                <li><a class="dropdown-item" href="tel:+977-9810000000"><i class="fas fa-ambulance me-2"></i> Ambulance: +977-9810000000</a></li>
-                <li><a class="dropdown-item" href="tel:+977-9810000001"><i class="fas fa-hospital me-2"></i> Emergency: +977-9810000001</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="tel:102"><i class="fas fa-phone-alt me-2"></i> National Emergency: 102</a></li>
-            </ul>
-        </div>
+    <section class="cta-section bg-primary text-white rounded p-5 text-center">
+        <h3 class="mb-4">Need Medical Assistance?</h3>
+        <p class="mb-4">Our team is ready to provide you with exceptional care</p>
+        <div class="d-flex justify-content-center gap-3">
+            <!-- Emergency Call Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-light px-4 dropdown-toggle" type="button" id="emergencyDropdown" data-bs-toggle="dropdown">
+                    <i class="fas fa-phone me-2"></i> Emergency Call
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
+                    <li><h6 class="dropdown-header">Emergency Contacts</h6></li>
+                    <li><a class="dropdown-item" href="tel:+977-9810000000"><i class="fas fa-ambulance me-2"></i> Ambulance: +977-9810000000</a></li>
+                    <li><a class="dropdown-item" href="tel:+977-9810000001"><i class="fas fa-hospital me-2"></i> Emergency: +977-9810000001</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="tel:102"><i class="fas fa-phone-alt me-2"></i> National Emergency: 102</a></li>
+                </ul>
+            </div>
 
-        <!-- Book Appointment Button -->
-        <a href="{% url 'appointment' %}" class="btn btn-outline-light px-4">
-            <i class="fas fa-calendar me-2"></i> Book Appointment
-        </a>
-    </div>
-</section>
+            <!-- Book Appointment Button -->
+            <a href="{% url 'appointment' %}" class="btn btn-outline-light px-4">
+                <i class="fas fa-calendar me-2"></i> Book Appointment
+            </a>
+        </div>
+    </section>
+</div>
 
 <style>
+    .hospital-story {
+        background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                    url('{% static "images/pattern-bg.png" %}');
+        background-size: cover;
+    }
+    .divider {
+        opacity: 0.7;
+    }
+    .story-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
     .hover-shadow:hover {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         transform: translateY(-3px);
@@ -159,7 +223,7 @@
     .doctor-image-container {
         position: relative;
         overflow: hidden;
-        height: 300px; /* Fixed height for all doctor images */
+        height: 300px;
     }
     .doctor-image-container img {
         width: 100%;
