@@ -1,6 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+
+
 
 def Home(request):
     return render(request, 'home.html')
@@ -65,30 +69,60 @@ def Services(request):
 def Appointment(request):
     return render(request, 'appointment.html')
 
+
 def Index(request):
     if not request.user.is_staff:
         return redirect('login')
     return render(request, 'index.html')
 
-def Login(request):
-    error = ""
+
+def Register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = True
+            # Only set is_staff=True for actual admin users
+            # Or remove this line to default to False
+            user.save()
+
+            # Authenticate and login the user
+            authenticated_user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1']
+            )
+            if authenticated_user:
+                auth_login(request, authenticated_user)
+                messages.success(request, "Registration successful! You are now logged in.")
+                return redirect('home')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'registration.html', {'form': form})
+
+
+def user_login(request):  # Renamed from 'login' to avoid conflict
     if request.method == "POST":
-        u = request.POST['uname']
-        p = request.POST['pwd']
-        user = authenticate(username=u, password=p)
+        username = request.POST.get('uname')
+        password = request.POST.get('pwd')
+        user = authenticate(request, username=username, password=password)
 
-        if user is not None and user.is_staff:
-            login(request, user)
-            return redirect('index')  # Redirect on successful login
+        if user is not None:
+            if user.is_active:
+                auth_login(request, user)  # Use the renamed import
+                messages.success(request, "Logged in successfully!")
+                if user.is_staff:
+                    return redirect('index')  # Staff go to admin dashboard
+                return redirect('home')  # Regular users go to home
+            else:
+                messages.error(request, "Account is not active")
         else:
-            error = "yes"  # Login failed
+            messages.error(request, "Invalid username or password")
 
-    return render(request, 'login.html', {'error': error})
+    return render(request, 'login.html')
+
 
 def Logout_admin(request):
-    if not request.user.is_staff:
-        return redirect('login')
-
     logout(request)
-    return redirect('login')
-
+    messages.success(request, "Logged out successfully!")
+    return redirect('home')  # Redirect to home after logout

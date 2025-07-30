@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <!-- Hospital Logo -->
+                    <div class="text-center mb-4">
+                        <img src="{% static 'images/hospital-logo.png' %}"
+                             alt="Binayak Care Hospital"
+                             class="img-fluid"
+                             style="max-height: 80px;">
+                    </div>
+
+                    <h2 class="text-center mb-4">New Registration</h2>
+
+                    <!-- Error Messages -->
+                    {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <strong>Registration Error!</strong> Please correct the errors below.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+
+                    <!-- Registration Form -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" 
+                                   class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+                                   name="username"
+                                   required
+                                   placeholder="Choose username">
+                            {% if form.username.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.username.errors|first }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password"
+                                   class="form-control {% if form.password1.errors %}is-invalid{% endif %}"
+                                   name="password1"
+                                   required
+                                   placeholder="Create password">
+                            {% if form.password1.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.password1.errors|first }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password"
+                                   class="form-control {% if form.password2.errors %}is-invalid{% endif %}"
+                                   name="password2"
+                                   required
+                                   placeholder="Repeat password">
+                            {% if form.password2.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.password2.errors|first }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary py-2">
+                                <i class="fas fa-user-plus me-2"></i> Register
+                            </button>
+                        </div>
+
+                        <div class="text-center small">
+                            Already registered? <a href="{% url 'login' %}">Login here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+        border: none;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .btn-primary {
+        background-color: #0d6efd;
+        transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-1px);
+    }
+</style>
+{% endblock %}
