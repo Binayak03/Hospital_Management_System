@@ -7,9 +7,16 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h1 class="display-4">Welcome to Binayak Care Hospital</h1>
-                <p class="lead text-muted">"Compassionate Care, Advanced Medicine"</p>
-                <p class="mt-3">Your trusted healthcare partner since 1995, providing exceptional medical services with state-of-the-art technology and a patient-first approach.</p>
+                <h1 class="display-4 fw-bold text-primary mb-4"> Binayak Care Hospital</h1>
+                <p class="lead text-muted">"Healing with Heart, Serving with Integrity."</p>
+                <p class="mt-3">At Binayak Care Hospital, our journey began in 2025 AD / 2082 BS with a vision:
+"To bring compassionate, high-quality healthcare within everyone’s reach."</p>
+
+<p class="mt-3">Nestled in the heart of the community, our hospital was founded on the belief that affordability should never come at the cost of excellence. From day one, we've committed ourselves to delivering world-class medical care that rivals top-tier private hospitals — without burdening our patients financially.</p>
+
+<p class="mt-3">With 150+ beds, a dedicated team of 50+ experienced doctors, and a NABH accreditation that ensures we meet the highest standards in medical services, we’ve built more than just a hospital, we’ve built a place where care meets trust.</p>
+
+<p class="mt-3">Whether it's a sudden emergency at midnight or a long-term health concern, we’re here for you 24/7, always ready, always caring.</p>
                 <a href="{% url 'appointment' %}" class="btn btn-primary mt-3">Book an Appointment</a>
             </div>
             <div class="col-md-6">
@@ -20,27 +27,27 @@
 </div>
 
 <!-- Services Carousel -->
-<div class="container-fluid py-5 bg-white">
+<div class="container-fluid py-5 bg-white" >
     <div class="container">
         <h2 class="text-center mb-5">Our Specialized Services</h2>
         <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{% static 'images/mri.jpeg' %}" class="d-block w-100" alt="MRI Services">
+                    <img src="{% static 'images/mri.jpg' %}" class="d-block w-100" alt="MRI Services">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75">
                         <h5>3 Tesla MRI</h5>
                         <p>High-resolution imaging for accurate diagnosis</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/xray.jpeg' %}" class="d-block w-100" alt="X-Ray">
+                    <img src="{% static 'images/xray.jpg' %}" class="d-block w-100" alt="X-Ray">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75">
                         <h5>128-Slice X-Ray </h5>
                         <p>Ultra-fast scanning with minimal radiation</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/hlab.jpeg' %}" class="d-block w-100" alt="Lab">
+                    <img src="{% static 'images/hlab.jpg' %}" class="d-block w-100" alt="Lab">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75">
                         <h5>Hospital Lab</h5>
                         <p>Modern Lab with Highest Accuracy</p>
@@ -59,60 +66,90 @@
 </div>
 
 <!-- Services Grid -->
-<div class="container-fluid py-5 bg-light">
+<div class<!-- Medical Departments - Professional Design -->
+<div class="container-fluid py-5 bg-white">
     <div class="container">
-        <h2 class="text-center mb-5">Our Medical Departments</h2>
+        <h2 class="text-center mb-5">Our Specialized Departments</h2>
         <div class="row g-4">
+            <!-- Department 1 -->
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="{% static 'images/services/mri.jpg' %}" class="card-img-top" alt="MRI">
-                    <div class="card-body">
-                        <h5 class="card-title">MRI Scanning</h5>
-                        <p class="card-text">Non-invasive diagnostic imaging using magnetic fields</p>
+                <div class="department-card p-4 h-100 border-0 shadow-sm rounded-3">
+                    <div class="department-icon bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-brain text-primary fs-4"></i>
                     </div>
+                    <h4 class="h5">Neurology</h4>
+                    <p class="text-muted mb-2">Advanced care for brain and nervous system disorders</p>
+                    <ul class="list-unstyled text-sm text-muted">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> EEG/EMG Testing</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Stroke Rehabilitation</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Sleep Studies</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- Department 2 -->
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="{% static 'images/services/ct-scan.jpg' %}" class="card-img-top" alt="CT Scan">
-                    <div class="card-body">
-                        <h5 class="card-title">CT Scan</h5>
-                        <p class="card-text">Advanced computed tomography for detailed imaging</p>
+                <div class="department-card p-4 h-100 border-0 shadow-sm rounded-3">
+                    <div class="department-icon bg-danger bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-heart text-danger fs-4"></i>
                     </div>
+                    <h4 class="h5">Cardiology</h4>
+                    <p class="text-muted mb-2">Comprehensive heart care with cutting-edge technology</p>
+                    <ul class="list-unstyled text-sm text-muted">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Echocardiography</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Angioplasty</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Holter Monitoring</li>
+                    </ul>
                 </div>
             </div>
-            <!-- Add 4 more service cards -->
+
+            <!-- Department 3 -->
+            <div class="col-md-4">
+                <div class="department-card p-4 h-100 border-0 shadow-sm rounded-3">
+                    <div class="department-icon bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-x-ray text-info fs-4"></i>
+                    </div>
+                    <h4 class="h5">Radiology</h4>
+                    <p class="text-muted mb-2">State-of-the-art diagnostic imaging services</p>
+                    <ul class="list-unstyled text-sm text-muted">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> 3T MRI</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> 128-Slice CT</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Digital X-Ray</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add 3 more departments following same pattern -->
         </div>
     </div>
 </div>
-
-<!-- Footer with Social Media -->
-<footer class="bg-dark text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Connect With Us</h5>
-                <div class="social-links mt-3">
-                    <a href="https://facebook.com/binayakhospital" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
-                    <a href="https://instagram.com/binayakhospital" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://twitter.com/binayakhospital" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'appointment' %}" class="text-white">Book Appointment</a></li>
-                    <li><a href="{% url 'services' %}" class="text-white">Our Services</a></li>
+</div>
+   <section class="cta-section bg-primary text-white rounded p-5 text-center">
+        <h3 class="mb-4">Need Medical Assistance?</h3>
+        <p class="mb-4">Our team is ready to provide you with exceptional care</p>
+        <div class="d-flex justify-content-center gap-3">
+            <!-- Emergency Call Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-light px-4 dropdown-toggle" type="button" id="emergencyDropdown" data-bs-toggle="dropdown">
+                    <i class="fas fa-phone me-2"></i> Emergency Call
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
+                    <li><h6 class="dropdown-header">Emergency Contacts</h6></li>
+                    <li><a class="dropdown-item" href="tel:+977-9810000000"><i class="fas fa-ambulance me-2"></i> Ambulance: +977-9810000000</a></li>
+                    <li><a class="dropdown-item" href="tel:+977-9810000001"><i class="fas fa-hospital me-2"></i> Emergency: +977-9810000001</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="tel:102"><i class="fas fa-phone-alt me-2"></i> National Emergency: 102</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <h5>Our Location</h5>
-                <div class="ratio ratio-16x9">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.456783724207!2d85.31646431506206!3d27.70324038279392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a64b5f13e1%3A0x28b2d0eacda45b66!2sBinayak%20Care%20Hospital!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp"
-                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
+
+            <!-- Book Appointment Button -->
+            <a href="{% url 'appointment' %}" class="btn btn-outline-light px-4">
+                <i class="fas fa-calendar me-2"></i> Book Appointment
+            </a>
         </div>
-    </div>
-</footer>
+    </section>
+<div class="my-5"></div>
+<!-- <div class="py-3 py-md-5"></div> -->
+<!-- Footer with Social Media -->
+
 {% endblock %}
