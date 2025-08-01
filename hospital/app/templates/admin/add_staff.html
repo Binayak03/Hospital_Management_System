@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Staff Member</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">User Account</h5>
+                {{ user_form.as_p }}
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Staff Details</h5>
+                {{ staff_form.as_p }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Save Staff Member</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Appointments</h3>
+    
+    <div class="mb-3">
+        {% for dept in departments %}
+        <a href="?dept={{ dept.id }}" 
+           class="btn btn-sm {% if dept == selected_dept %}btn-primary{% else %}btn-outline-primary{% endif %} me-2">
+            {{ dept.name }}
+        </a>
+        {% endfor %}
+    </div>
+
+    {% if appointments %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Age</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Symptoms</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt in appointments %}
+                <tr>
+                    <td>{{ appt.patient.name }}</td>
+                    <td>{{ appt.patient.age }}</td>
+                    <td>{{ appt.appointment_date|date:"M d" }}</td>
+                    <td>{{ appt.appointment_time|time:"H:i" }}</td>
+                    <td>{{ appt.symptoms|truncatechars:30 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">No appointments found</div>
+    {% endif %}
+</div>
+{% endblock %}

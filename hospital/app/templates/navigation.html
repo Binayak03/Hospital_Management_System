@@ -20,11 +20,20 @@
                     <a class="nav-link" href="{% url 'services' %}">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Staff</a>
+                    <a class="nav-link" href="{% url 'staff_list' %}">Staff</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'appointment' %}">Appointments</a>
                 </li>
+
+                <!-- Doctor Dashboard Link (only visible to doctors) -->
+                {% if user.is_authenticated and user.staff.role == 'Doctor' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doctor_dashboard' %}">
+                        <i class="fas fa-user-md me-1"></i>My Appointments
+                    </a>
+                </li>
+                {% endif %}
             </ul>
 
             <form class="d-flex me-3">
@@ -46,42 +55,77 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><h6 class="dropdown-header">Logged in as</h6></li>
-                        <li><span class="dropdown-item-text">
-                            <i class="fas fa-user-tag me-2"></i>
-                            {% if user.is_staff %}Admin{% else %}User{% endif %}
-                        </span></li>
+                        <li>
+                            <span class="dropdown-item-text">
+                                <i class="fas fa-user-tag me-2"></i>
+                                {% if user.is_staff %}
+                                    Admin
+                                {% elif user.staff.role == 'Doctor' %}
+                                    Doctor
+                                {% elif user.staff.role == 'Patient' %}
+                                    Patient
+                                {% else %}
+                                    User
+                                {% endif %}
+                            </span>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>My Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+
+                        <!-- Doctor-specific dropdown items -->
+                        {% if user.staff.role == 'Doctor' %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'doctor_dashboard' %}">
+                                <i class="fas fa-calendar-check me-2"></i>My Appointments
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        <!-- Common dropdown items -->
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user me-2"></i>My Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="{% url 'logout_admin' %}">
-                            <i class="fas fa-sign-out-alt me-2"></i>Logout
-                        </a></li>
+                        <li>
+                            <a class="dropdown-item text-danger" href="{% url 'logout_admin' %}">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {% else %}
                 <!-- User is not logged in - show login/register dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-sign-in-alt me-1"></i> Login/Register
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><h6 class="dropdown-header">Select Login Type</h6></li>
-                        <li><a class="dropdown-item" href="{% url 'login' %}">
-                            <i class="fas fa-user-shield me-2"></i>Admin Login
-                        </a></li>
-                        <li><a class="dropdown-item" href="/doctor/login">
-                            <i class="fas fa-user-md me-2"></i>Doctor Login
-                        </a></li>
-                        <li><a class="dropdown-item" href="{%url 'patient_list'%}">
-                            <i class="fas fa-user-injured me-2"></i>Patient Login
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-success" href="{% url 'register' %}">
-                            <i class="fas fa-user-plus me-2"></i>New Registration
-                        </a></li>
-                    </ul>
-                </li>
+               <!-- In your navigation.html -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
+                    <i class="fas fa-sign-in-alt me-1"></i> Login/Register
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><h6 class="dropdown-header">Select Login Type</h6></li>
+                    <li><a class="dropdown-item" href="{% url 'admin_login' %}">
+                        <i class="fas fa-user-shield me-2"></i>Admin Login
+                    </a></li>
+                    <li><a class="dropdown-item" href="{% url 'doctor_login' %}">
+                        <i class="fas fa-user-md me-2"></i>Doctor Login
+                    </a></li>
+                    <li><a class="dropdown-item" href="{% url 'patient_login' %}">
+                        <i class="fas fa-user-injured me-2"></i>Patient Login
+                    </a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-success" href="{% url 'register' %}?role=doctor">
+                        <i class="fas fa-user-plus me-2"></i>Doctor Registration
+                    </a></li>
+                    <li><a class="dropdown-item text-success" href="{% url 'register' %}?role=patient">
+                        <i class="fas fa-user-plus me-2"></i>Patient Registration
+                    </a></li>
+                </ul>
+            </li>
                 {% endif %}
             </ul>
         </div>

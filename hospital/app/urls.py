@@ -1,24 +1,31 @@
 from django.urls import path
 from .views import (
     Home, About, Services, Appointment,
-    user_login, Logout_admin, Index, Register,
+    admin_login, doctor_login, patient_login,
+    Logout_admin, Index, Register,
     patient_list, add_patient, discharge_patient,
-    staff_list, add_staff
+    staff_list, add_staff, doctor_dashboard
 )
 
 urlpatterns = [
-    # Existing URLs
-    path('', Home, name='home_root'),
-    path('home/', Home, name='home'),
+    # Public URLs
+    path('', Home, name='home'),
     path('about/', About, name='about'),
     path('services/', Services, name='services'),
     path('appointment/', Appointment, name='appointment'),
-    path('login/', user_login, name='login'),
-    path('logout/', Logout_admin, name='logout_admin'),
-    path('admin_dashboard/', Index, name='index'),
+
+    # Authentication URLs
+    path('admin/login/', admin_login, name='admin_login'),
+    path('doctor/login/', doctor_login, name='doctor_login'),
+    path('patient/login/', patient_login, name='patient_login'),
+    path('logout/', Logout_admin, name='logout'),
     path('register/', Register, name='register'),
 
-    # New Admin URLs
+    # Dashboard URLs
+    path('admin/dashboard/', Index, name='admin_dashboard'),
+    path('doctor/dashboard/', doctor_dashboard, name='doctor_dashboard'),
+
+    # Management URLs
     path('admin/patients/', patient_list, name='patient_list'),
     path('admin/patients/add/', add_patient, name='add_patient'),
     path('admin/patients/discharge/<int:patient_id>/', discharge_patient, name='discharge_patient'),
